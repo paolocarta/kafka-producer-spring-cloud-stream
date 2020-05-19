@@ -1,0 +1,6 @@
+
+
+oc import-image openjdk/openjdk-11-rhel7 --from=registry.access.redhat.com/openjdk/openjdk-11-rhel7 --confirm
+
+oc new-app openjdk-11-rhel7~url \
+--name=kafka-producer
