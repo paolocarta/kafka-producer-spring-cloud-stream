@@ -15,7 +15,7 @@ public class ProducerScheduler {
 
     private long messageNumber;
 
-    @Scheduled(fixedRate = 1000, initialDelay = 5000)
+    @Scheduled(fixedRate = 2, initialDelay = 5000)
     public void sendTimeMessage(){
 
         messageNumber++;
