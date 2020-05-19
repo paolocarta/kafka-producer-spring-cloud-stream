@@ -1,6 +1,8 @@
-
+#oc apply -f my-registry-serviceaccount-token.yaml
 
 oc import-image openjdk/openjdk-11-rhel7 --from=registry.access.redhat.com/openjdk/openjdk-11-rhel7 --confirm
 
-oc new-app openjdk-11-rhel7~url \
+oc new-project kafka-playground
+
+oc new-app openjdk-11-rhel7~https://github.com/paolocarta/kafka-producer-spring-cloud-stream.git \
 --name=kafka-producer
