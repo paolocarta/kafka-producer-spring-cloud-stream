@@ -21,7 +21,7 @@ public class ProducerScheduler {
         messageNumber++;
 //        log.info("Producing message number: {}", messageNumber);
 
-        MessageDto messageDto = producerService.send(messageNumber);
-        log.info("Message sent: {}", messageDto);
+        producerService.send(messageNumber);
+//        log.info("Message sent: {}", messageDto);
     }
 }

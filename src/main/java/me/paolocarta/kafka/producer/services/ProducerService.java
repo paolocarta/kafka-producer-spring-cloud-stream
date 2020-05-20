@@ -1,22 +1,29 @@
 package me.paolocarta.kafka.producer.services;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.stream.messaging.Source;
-import org.springframework.integration.annotation.Publisher;
-import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Slf4j
 @Service
 public class ProducerService {
 
+    @Resource(name = "output")
+    private MessageChannel messageChannel;
+
 //    @Publisher(channel = Source.OUTPUT)
-    @SendTo(value = Source.OUTPUT)
-    public MessageDto send(long messageNumber) {
+//    @SendTo(Source.OUTPUT)
+    public void send(long messageNumber) {
 
         long timestamp = System.currentTimeMillis();
         log.info("Sending message with id: {} ", messageNumber);
 
-        return new MessageDto(messageNumber, timestamp);
+        messageChannel.send(MessageBuilder.createMessage(new MessageDto(messageNumber, timestamp), new MessageHeaders(null)));
+
     }
 }
