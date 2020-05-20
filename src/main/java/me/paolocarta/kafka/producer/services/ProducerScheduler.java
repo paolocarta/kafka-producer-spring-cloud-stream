@@ -15,13 +15,11 @@ public class ProducerScheduler {
 
     private long messageNumber;
 
-    @Scheduled(fixedRate = 500, initialDelay = 5000)
+    @Scheduled(fixedRate = 100, initialDelay = 5000)
     public void sendTimeMessage(){
 
         messageNumber++;
-//        log.info("Producing message number: {}", messageNumber);
 
         producerService.send(messageNumber);
-//        log.info("Message sent: {}", messageDto);
     }
 }

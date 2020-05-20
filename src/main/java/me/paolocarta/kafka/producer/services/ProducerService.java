@@ -1,7 +1,6 @@
 package me.paolocarta.kafka.producer.services;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.MessageBuilder;
@@ -21,7 +20,7 @@ public class ProducerService {
     public void send(long messageNumber) {
 
         long timestamp = System.currentTimeMillis();
-        log.info("Sending message with id: {} ", messageNumber);
+        log.debug("Sending message with id: {} ", messageNumber);
 
         messageChannel.send(MessageBuilder.createMessage(new MessageDto(messageNumber, timestamp), new MessageHeaders(null)));
 
