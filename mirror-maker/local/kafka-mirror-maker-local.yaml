@@ -3,7 +3,7 @@ kind: KafkaMirrorMaker
 metadata:
   name: my-mirror-maker
 spec:
-  replicas: 1
+  replicas: 3
   consumer:
     bootstrapServers: my-cluster-kafka-bootstrap.kafka-playground.svc:9092
     groupId: my-source-group-id

@@ -3,13 +3,13 @@ kind: KafkaMirrorMaker
 metadata:
   name: mirror-maker-azure
 spec:
-  version: 2.4.0
-  replicas: 1
+  replicas: 3
   consumer:
     bootstrapServers: my-cluster-kafka-bootstrap.kafka-playground.svc:9092
     groupId: my-source-azure-group-id
   producer:
     bootstrapServers: kafka-strimzi-mirrored.servicebus.windows.net:9093
+    abortOnSendFailure: false
     authentication:
       type: plain
       username: $ConnectionString
